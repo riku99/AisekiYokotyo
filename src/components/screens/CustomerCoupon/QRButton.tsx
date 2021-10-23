@@ -3,6 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import MIcon from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
+import { defaultStyle } from "../../../styles";
 
 MIcon.loadFont();
 
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
   button: {
     width: 130,
     borderRadius: 30,
-    backgroundColor: "#ffbc1f",
+    backgroundColor: defaultStyle.main,
     paddingVertical: 10,
   },
   title: {

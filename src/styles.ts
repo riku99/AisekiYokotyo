@@ -1,3 +1,3 @@
 export const defaultStyle = {
-  main: "#ffbc1f",
+  main: "#db380f",
 };

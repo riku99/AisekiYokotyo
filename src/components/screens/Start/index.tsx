@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { Button } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
+import { defaultStyle } from "../../../styles";
 
 export const Start = () => {
   const navigation = useNavigation();
@@ -41,6 +42,7 @@ export const Start = () => {
             containerStyle={styles.buttonContainer}
             onPress={onStartButtonPress}
             activeOpacity={1}
+            titleStyle={{ fontWeight: "bold" }}
           />
         </SafeAreaView>
       </View>
@@ -62,8 +64,8 @@ const styles = StyleSheet.create({
     height: 41,
     width: 320,
     alignSelf: "center",
-    borderColor: "gray",
-    borderWidth: 1,
+    borderBottomColor: "gray",
+    borderBottomWidth: 1,
   },
   buttonContainer: {
     width: 282,
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
     marginTop: 300,
   },
   button: {
-    backgroundColor: "#ffbc1f",
+    backgroundColor: defaultStyle.main,
   },
   titleStyle: {
     fontSize: 11,

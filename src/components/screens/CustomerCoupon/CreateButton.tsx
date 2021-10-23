@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
+import { defaultStyle } from "../../../styles";
 
 export const CreateButton = () => {
   const navigation = useNavigation();
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
   button: {
     width: 130,
     borderRadius: 30,
-    backgroundColor: "#ffbc1f",
+    backgroundColor: defaultStyle.main,
     paddingVertical: 10,
   },
   title: {
