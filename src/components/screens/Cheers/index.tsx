@@ -1,44 +1,42 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Button, StyleSheet, View } from "react-native";
 import LottieView from "lottie-react-native";
+
+import { defaultStyle } from "../../../styles";
 
 export const Cheers = () => {
   const animation = useRef(null);
 
   const startAnimation = () => {
     if (animation.current !== null) {
+      // @ts-ignore
       animation.current.play();
     }
   };
+
+  useEffect(() => {
+    startAnimation();
+  }, []);
 
   return (
     <View style={styles.animationContainer}>
       <LottieView
         ref={animation}
         style={{
-          width: 400,
-          height: 400,
-          backgroundColor: "#eee",
+          width: "100%",
+          height: "100%",
         }}
-        source={require("../../../assets/a.json")}
-        // OR find more Lottie files @ https://lottiefiles.com/featured
-        // Just click the one you like, place that file in the 'assets' folder to the left, and replace the above 'require' statement
+        source={require("../../../assets/cheers.json")}
       />
-      <View style={styles.buttonContainer}>
-        <Button title="Start Animation" onPress={() => startAnimation()} />
-      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   animationContainer: {
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
-  },
-  buttonContainer: {
-    paddingTop: 20,
+    backgroundColor: defaultStyle.main,
   },
 });
