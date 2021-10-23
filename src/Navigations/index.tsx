@@ -10,6 +10,7 @@ import { CustomerCoupon } from "../components/screens/CustomerCoupon";
 import { ShopInput } from "../components/screens/ShopInput";
 import { ShopCoupons } from "../components/screens/ShopCoupons";
 import { ShopCouopnUse } from "../components/screens/ShopCouponUse";
+import { QRCamera } from "../components/screens/QRCamera";
 
 type StackParamList = {
   Start: undefined;
@@ -17,6 +18,7 @@ type StackParamList = {
   ShopInput: undefined;
   ShopCoupons: undefined;
   ShopCouponUse: undefined;
+  QRCamera: undefined;
 };
 
 const RootStack = createStackNavigator<StackParamList>();
@@ -54,6 +56,11 @@ export const RootNavigations = () => {
         name="ShopCouponUse"
         component={ShopCouopnUse}
         options={{ headerTitle: "クーポンを公開" }}
+      />
+      <RootStack.Screen
+        name="QRCamera"
+        component={QRCamera}
+        options={{ headerShown: false }}
       />
     </RootStack.Navigator>
   );

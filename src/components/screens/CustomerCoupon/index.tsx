@@ -3,6 +3,7 @@ import { View, ScrollView, StyleSheet } from "react-native";
 
 import { CreateButton } from "./CreateButton";
 import { CouponItem } from "../../utils/CouponItem";
+import { QRButton } from "./QRButton";
 
 const data = [
   {
@@ -27,6 +28,7 @@ const data = [
   },
 ];
 
+// お客さんが公開したチケット(クーポン)。外のユーザーがこれを予約する
 export const CustomerCoupon = () => {
   return (
     <View>
@@ -46,6 +48,10 @@ export const CustomerCoupon = () => {
       <View style={styles.createButton}>
         <CreateButton />
       </View>
+
+      <View style={styles.qrButtonContainer}>
+        <QRButton />
+      </View>
     </View>
   );
 };
@@ -60,6 +66,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 60,
     right: 20,
-    // backgroundColor: "red",
+  },
+  qrButtonContainer: {
+    position: "absolute",
+    bottom: 60,
+    left: 20,
   },
 });

@@ -17,6 +17,7 @@ export const ShopCouopnUse = () => {
         buttonStyle={styles.button}
         containerStyle={styles.buttonContainer}
         titleStyle={styles.titleStyle}
+        activeOpacity={1}
       />
     </View>
   );

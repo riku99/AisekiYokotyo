@@ -1,5 +1,14 @@
-import React from "react";
-import { View, Text, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+  Pressable,
+  Alert,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 type Props = {
   id: number;
@@ -9,12 +18,43 @@ type Props = {
 };
 
 export const CouponItem = ({ id, name, text, containerStyle }: Props) => {
+  const navigation = useNavigation();
+  const [validatedId, setValidatedId] = useState<number>();
+
+  const onPress = () => {
+    Alert.alert(
+      "このチケットを予約しますか?",
+      "その時の席の状況によってはご案内できない場合がございます。また、こちらからキャンセルすることはできません",
+      [
+        {
+          text: "はい",
+          onPress: () => {
+            // 予約状態にstatus変える
+            navigation.navigate("QRCamera");
+          },
+        },
+        {
+          text: "キャンセル",
+        },
+      ]
+    );
+  };
+
   return (
     <View style={[styles.content, containerStyle]}>
-      <View>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.text}>{text}</Text>
-      </View>
+      <Pressable
+        onPress={onPress}
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <View>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.text}>{text}</Text>
+        </View>
+      </Pressable>
     </View>
   );
 };
