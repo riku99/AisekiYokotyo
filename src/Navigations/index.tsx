@@ -9,12 +9,14 @@ import { Start } from "../components/screens/Start";
 import { CustomerCoupon } from "../components/screens/CustomerCoupon";
 import { ShopInput } from "../components/screens/ShopInput";
 import { ShopCoupons } from "../components/screens/ShopCoupons";
+import { ShopCouopnUse } from "../components/screens/ShopCouponUse";
 
 type StackParamList = {
   Start: undefined;
   CustomerCoupon: undefined;
   ShopInput: undefined;
   ShopCoupons: undefined;
+  ShopCouponUse: undefined;
 };
 
 const RootStack = createStackNavigator<StackParamList>();
@@ -47,6 +49,11 @@ export const RootNavigations = () => {
         name="ShopCoupons"
         component={ShopCoupons}
         options={{ headerTitle: "お店が提供しているチケット" }}
+      />
+      <RootStack.Screen
+        name="ShopCouponUse"
+        component={ShopCouopnUse}
+        options={{ headerTitle: "クーポンを公開" }}
       />
     </RootStack.Navigator>
   );

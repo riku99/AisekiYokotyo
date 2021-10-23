@@ -8,6 +8,7 @@ import {
   Image,
   Pressable,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 type Props = {
   id: number;
@@ -16,6 +17,12 @@ type Props = {
 };
 
 export const Item = ({ id, sheetId, containerStyle }: Props) => {
+  const navigation = useNavigation();
+
+  const onPress = () => {
+    navigation.navigate("ShopCouponUse");
+  };
+
   return (
     <View style={[styles.content, containerStyle]}>
       <View>
@@ -28,7 +35,7 @@ export const Item = ({ id, sheetId, containerStyle }: Props) => {
           resizeMode="contain"
         />
         <Text style={styles.text}>座席番号: {sheetId}に発行されています</Text>
-        <Pressable>
+        <Pressable onPress={onPress}>
           <Text style={styles.useLink}>使用する</Text>
         </Pressable>
       </View>
