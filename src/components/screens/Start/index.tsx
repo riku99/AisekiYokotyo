@@ -5,30 +5,46 @@ import {
   Text,
   SafeAreaView,
   TextInput,
-  Pressable,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { Button } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 
 export const Start = () => {
+  const navigation = useNavigation();
+
+  const onStartButtonPress = () => {
+    navigation.navigate("CustomerCoupon");
+  };
+
   return (
-    <View style={styles.container}>
-      <SafeAreaView>
-        <Text style={styles.title}>相席横丁</Text>
-        <TextInput
-          style={[styles.input, { marginTop: 70 }]}
-          placeholder="名前"
-        />
-        <TextInput
-          style={[styles.input, { marginTop: 40 }]}
-          placeholder="年齢入力"
-        />
-        <Button
-          buttonStyle={styles.button}
-          title="start"
-          containerStyle={styles.buttonContainer}
-        />
-      </SafeAreaView>
-    </View>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}
+    >
+      <View style={styles.container}>
+        <SafeAreaView>
+          <Text style={styles.title}>相席横丁</Text>
+          <TextInput
+            style={[styles.input, { marginTop: 70 }]}
+            placeholder="名前"
+          />
+          <TextInput
+            style={[styles.input, { marginTop: 40 }]}
+            placeholder="年齢入力"
+          />
+          <Button
+            buttonStyle={styles.button}
+            title="開始する"
+            containerStyle={styles.buttonContainer}
+            onPress={onStartButtonPress}
+            activeOpacity={1}
+          />
+        </SafeAreaView>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -56,7 +72,7 @@ const styles = StyleSheet.create({
     marginTop: 300,
   },
   button: {
-    backgroundColor: "#f5bc42",
+    backgroundColor: "#ffbc1f",
   },
   titleStyle: {
     fontSize: 11,

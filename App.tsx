@@ -1,14 +1,12 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { BarCodeScanner } from "expo-barcode-scanner";
-import { Start } from "./src/components/screens/Start";
+import { StyleSheet } from "react-native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { RootNavigations } from "./src/Navigations";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Start />
+    <NavigationContainer theme={MyTheme}>
+      <RootNavigations />
     </NavigationContainer>
   );
   // const [hasPermission, setHasPermission] = useState<null | boolean>(null);
@@ -38,6 +36,15 @@ export default function App() {
   //   </View>
   // );
 }
+
+export const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "white",
+    primary: "#ffbc1f",
+  },
+};
 
 const styles = StyleSheet.create({
   container: {
