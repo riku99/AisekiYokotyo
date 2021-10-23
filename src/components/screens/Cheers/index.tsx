@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Button, StyleSheet, View } from "react-native";
+import { StyleSheet, View, Pressable, Text } from "react-native";
 import LottieView from "lottie-react-native";
 
 import { defaultStyle } from "../../../styles";
@@ -18,6 +18,10 @@ export const Cheers = () => {
     startAnimation();
   }, []);
 
+  const onUsedButtonPress = () => {
+    // このクーポンのDELETE
+  };
+
   return (
     <View style={styles.animationContainer}>
       <LottieView
@@ -28,6 +32,26 @@ export const Cheers = () => {
         }}
         source={require("../../../assets/cheers.json")}
       />
+
+      <Pressable style={styles.cheerTextContainer}>
+        <Text style={styles.cheerText}>乾杯!</Text>
+      </Pressable>
+
+      <View style={styles.textContainer}>
+        <Text style={[styles.text]}>
+          この画面をお店に提示し、使用済みにするを押してください
+        </Text>
+        <Pressable>
+          <Text
+            style={[
+              styles.text,
+              { textDecorationLine: "underline", marginTop: 20 },
+            ]}
+          >
+            使用済みにする
+          </Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -38,5 +62,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
     backgroundColor: defaultStyle.main,
+  },
+  cheerTextContainer: {
+    position: "absolute",
+    bottom: "40%",
+  },
+  cheerText: {
+    fontWeight: "bold",
+    fontSize: 25,
+    color: "white",
+  },
+  textContainer: {
+    position: "absolute",
+    bottom: "15%",
+    alignItems: "center",
+  },
+  text: {
+    color: "white",
   },
 });

@@ -1,10 +1,20 @@
-import React from "react";
-import { View, StyleSheet, TextInput } from "react-native";
+import React, { useRef } from "react";
+import { View, StyleSheet, TextInput, Text } from "react-native";
 import { Button } from "react-native-elements";
+import QRCode from "react-native-qrcode-svg";
+import { Modalize } from "react-native-modalize";
 
 import { defaultStyle } from "../../../styles";
 
 export const ShopCouopnUse = () => {
+  const modalRef = useRef<Modalize>(null);
+
+  const onPress = () => {
+    if (modalRef.current?.open) {
+      modalRef.current.open();
+    }
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -18,7 +28,29 @@ export const ShopCouopnUse = () => {
         containerStyle={styles.buttonContainer}
         titleStyle={styles.titleStyle}
         activeOpacity={1}
+        onPress={onPress}
       />
+
+      <Modalize
+        ref={modalRef}
+        modalHeight={550}
+        scrollViewProps={{
+          keyboardShouldPersistTaps: "always",
+          scrollEnabled: false,
+        }}
+      >
+        <View style={styles.qrContainer}>
+          <QRCode value="value" size={200} />
+          <Text
+            style={{
+              fontSize: 16,
+              marginTop: 30,
+            }}
+          >
+            こちらのQRコードを読み取ってもらってください
+          </Text>
+        </View>
+      </Modalize>
     </View>
   );
 };
@@ -44,5 +76,10 @@ const styles = StyleSheet.create({
   },
   titleStyle: {
     fontWeight: "bold",
+  },
+  qrContainer: {
+    width: "100%",
+    alignItems: "center",
+    marginTop: 30,
   },
 });
