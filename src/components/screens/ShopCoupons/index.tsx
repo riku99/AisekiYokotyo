@@ -8,16 +8,27 @@ const data = [
     id: 1,
     sheetId: 10,
   },
+  {
+    id: 2,
+    sheetId: 11,
+  },
 ];
 
 export const ShopCoupons = () => {
   return (
     <View style={styles.container}>
       <ScrollView
-        contentContainerStyle={{ alignItems: "center", marginTop: 30 }}
+        contentContainerStyle={{ alignItems: "center", paddingVertical: 20 }}
       >
         {data.map((d) => {
-          return <Item key={d.id} sheetId={d.sheetId} id={d.id} />;
+          return (
+            <Item
+              key={d.id}
+              sheetId={d.sheetId}
+              id={d.id}
+              containerStyle={{ marginTop: 30 }}
+            />
+          );
         })}
       </ScrollView>
     </View>

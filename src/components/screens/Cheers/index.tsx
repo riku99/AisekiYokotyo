@@ -34,6 +34,9 @@ export const Cheers = () => {
       />
 
       <Pressable style={styles.cheerTextContainer}>
+        <Text style={{ color: "white", fontSize: 14 }}>
+          今日もお疲れ様です!!
+        </Text>
         <Text style={styles.cheerText}>乾杯!</Text>
       </Pressable>
 
@@ -66,11 +69,13 @@ const styles = StyleSheet.create({
   cheerTextContainer: {
     position: "absolute",
     bottom: "40%",
+    alignItems: "center",
   },
   cheerText: {
     fontWeight: "bold",
     fontSize: 25,
     color: "white",
+    marginTop: 5,
   },
   textContainer: {
     position: "absolute",

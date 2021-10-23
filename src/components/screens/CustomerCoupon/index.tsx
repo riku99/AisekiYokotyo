@@ -4,6 +4,7 @@ import { View, ScrollView, StyleSheet } from "react-native";
 import { CreateButton } from "./CreateButton";
 import { CouponItem } from "../../utils/CouponItem";
 import { QRButton } from "./QRButton";
+import { Item } from "./Item";
 
 const data = [
   {
@@ -35,7 +36,7 @@ export const CustomerCoupon = () => {
       <ScrollView contentContainerStyle={styles.container}>
         {data.map((d) => {
           return (
-            <CouponItem
+            <Item
               key={d.id}
               id={d.id}
               name={d.name}

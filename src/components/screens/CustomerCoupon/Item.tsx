@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, StyleProp, ViewStyle } from "react-native";
 
+import { getRandomImg } from "../../../utils";
+
 type Props = {
   id: number;
   name: string;

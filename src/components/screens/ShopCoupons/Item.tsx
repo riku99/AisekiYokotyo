@@ -11,6 +11,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 import { getRandomImg } from "../../../utils";
+import { defaultStyle } from "../../../styles";
 
 type Props = {
   id: number;
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   useLink: {
-    color: "blue",
+    color: defaultStyle.main,
     textDecorationLine: "underline",
     alignSelf: "flex-end",
     marginTop: 10,

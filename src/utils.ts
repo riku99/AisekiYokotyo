@@ -3,6 +3,7 @@ export const assetsFromConponents = [
   "https://bc-bucket-dev.s3.ap-northeast-1.amazonaws.com/beer2.jpeg",
   "https://bc-bucket-dev.s3.ap-northeast-1.amazonaws.com/sawar.jpeg",
   "https://bc-bucket-dev.s3.ap-northeast-1.amazonaws.com/sawar2.jpeg",
+  "https://bc-bucket-dev.s3.ap-northeast-1.amazonaws.com/hibor.jpeg",
 ];
 
 export const getRandomImg = () =>

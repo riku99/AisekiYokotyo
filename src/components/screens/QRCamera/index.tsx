@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Vibration } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import { useNavigation } from "@react-navigation/native";
 
 export const QRCamera = () => {
+  const navigation = useNavigation();
   const [hasPermission, setHasPermission] = useState<null | boolean>(null);
   const [type, setType] = useState(BarCodeScanner.Constants.Type.back);
   useEffect(() => {
@@ -27,6 +29,7 @@ export const QRCamera = () => {
           console.log(e.data);
           if (e.data) {
             Vibration.vibrate();
+            navigation.navigate("Cheers");
           }
         }}
         style={styles.camera}

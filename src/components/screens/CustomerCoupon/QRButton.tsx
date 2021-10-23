@@ -12,7 +12,6 @@ export const QRButton = () => {
 
   const onPress = () => {
     navigation.navigate("QRCamera");
-    // navigation.navigate("Cheers");
   };
 
   return (
