@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
+import { getRandomImg } from "../../../utils";
+
 type Props = {
   id: number;
   sheetId: number;
@@ -31,7 +33,9 @@ export const Item = ({ id, sheetId, containerStyle }: Props) => {
             width: "100%",
             height: 130,
           }}
-          source={require("../../../assets/sawar2.jpeg")}
+          source={{
+            uri: getRandomImg(),
+          }}
           resizeMode="contain"
         />
         <Text style={styles.text}>座席番号: {sheetId}に発行されています</Text>
