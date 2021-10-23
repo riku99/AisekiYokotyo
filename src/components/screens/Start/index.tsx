@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -7,15 +7,32 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
+  Alert,
 } from "react-native";
 import { Button } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+
 import { defaultStyle } from "../../../styles";
+import { setUser } from "../../../stores/user";
 
 export const Start = () => {
   const navigation = useNavigation();
+  const [name, setName] = useState<string>();
+  const [age, setAge] = useState<number>();
+  const dispatch = useDispatch();
 
   const onStartButtonPress = () => {
+    if (!name || !age) {
+      Alert.alert("入力してください");
+      return;
+    }
+    dispatch(
+      setUser({
+        name,
+        age: 23,
+      })
+    );
     navigation.navigate("CustomerCoupon");
   };
 
@@ -31,10 +48,17 @@ export const Start = () => {
           <TextInput
             style={[styles.input, { marginTop: 70 }]}
             placeholder="名前"
+            onChangeText={(t) => {
+              setName(t);
+            }}
           />
           <TextInput
             style={[styles.input, { marginTop: 40 }]}
             placeholder="年齢入力"
+            keyboardType="number-pad"
+            onChangeText={(t) => {
+              setAge(Number(t));
+            }}
           />
           <Button
             buttonStyle={styles.button}

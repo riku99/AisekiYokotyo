@@ -8,7 +8,6 @@ import {
   Pressable,
   Alert,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
 type Props = {
   id: number;
@@ -18,7 +17,6 @@ type Props = {
 };
 
 export const CouponItem = ({ id, name, text, containerStyle }: Props) => {
-  const navigation = useNavigation();
   const [validatedId, setValidatedId] = useState<number>();
 
   const onPress = () => {
@@ -30,7 +28,6 @@ export const CouponItem = ({ id, name, text, containerStyle }: Props) => {
           text: "はい",
           onPress: () => {
             // 予約状態にstatus変える
-            navigation.navigate("QRCamera");
           },
         },
         {

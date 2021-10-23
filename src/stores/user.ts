@@ -14,10 +14,12 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: () => {},
+    setUser: (state, action: PayloadAction<User>) => {
+      return action.payload;
+    },
   },
 });
 
-export const {} = userSlice.actions;
+export const { setUser } = userSlice.actions;
 
 export const userReducer = userSlice.reducer;
