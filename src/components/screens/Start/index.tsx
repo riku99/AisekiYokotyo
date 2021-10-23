@@ -30,7 +30,7 @@ export const Start = () => {
     dispatch(
       setUser({
         name,
-        age: 23,
+        age,
       })
     );
     navigation.navigate("CustomerCoupon");

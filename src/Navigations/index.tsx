@@ -11,6 +11,7 @@ import { ShopInput } from "../components/screens/ShopInput";
 import { ShopCoupons } from "../components/screens/ShopCoupons";
 import { ShopCouopnUse } from "../components/screens/ShopCouponUse";
 import { QRCamera } from "../components/screens/QRCamera";
+import { Cheers } from "../components/screens/Cheers";
 
 type StackParamList = {
   Start: undefined;
@@ -19,6 +20,7 @@ type StackParamList = {
   ShopCoupons: undefined;
   ShopCouponUse: undefined;
   QRCamera: undefined;
+  Cheers: undefined;
 };
 
 const RootStack = createStackNavigator<StackParamList>();
@@ -60,6 +62,11 @@ export const RootNavigations = () => {
       <RootStack.Screen
         name="QRCamera"
         component={QRCamera}
+        options={{ headerShown: false }}
+      />
+      <RootStack.Screen
+        name="Cheers"
+        component={Cheers}
         options={{ headerShown: false }}
       />
     </RootStack.Navigator>

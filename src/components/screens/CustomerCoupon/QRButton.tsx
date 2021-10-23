@@ -11,7 +11,8 @@ export const QRButton = () => {
   const navigation = useNavigation();
 
   const onPress = () => {
-    navigation.navigate("QRCamera");
+    // navigation.navigate("QRCamera");
+    navigation.navigate("Cheers");
   };
 
   return (
