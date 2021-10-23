@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { RootNavigations } from "./src/Navigations";
+import { defaultStyle } from "./src/styles";
 
 export default function App() {
   return (
@@ -42,7 +43,7 @@ export const MyTheme = {
   colors: {
     ...DefaultTheme.colors,
     background: "white",
-    primary: "#ffbc1f",
+    primary: defaultStyle.main,
   },
 };
 
