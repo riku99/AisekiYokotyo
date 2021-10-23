@@ -25,7 +25,10 @@ export const RootNavigations = () => {
       <RootStack.Screen
         name="CustomerCoupon"
         component={CustomerCoupon}
-        options={{ headerTitle: "公開されているチケット" }}
+        options={{
+          headerTitle: "公開されているチケット",
+          headerBackTitleVisible: false,
+        }}
       />
     </RootStack.Navigator>
   );

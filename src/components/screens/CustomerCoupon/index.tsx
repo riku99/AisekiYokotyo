@@ -1,11 +1,13 @@
 import React from "react";
-import { View, ScrollView, Text, SafeAreaView, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
+
 import { Item } from "./Item";
+import { CreateButton } from "./CreateButton";
 
 const data = [
   {
     id: 1,
-    name: "九州市場",
+    name: "九州市場🐡",
     text: "生ビールで乾杯しましょう!!",
   },
   {
@@ -40,6 +42,9 @@ export const CustomerCoupon = () => {
           );
         })}
       </ScrollView>
+      <View style={styles.createButton}>
+        <CreateButton />
+      </View>
     </View>
   );
 };
@@ -49,5 +54,11 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     alignItems: "center",
+  },
+  createButton: {
+    position: "absolute",
+    bottom: 60,
+    right: 20,
+    // backgroundColor: "red",
   },
 });

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 15,
     backgroundColor: "white",
-    borderRadius: 5,
+    borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontWeight: "bold",
-    fontSize: 25,
+    fontSize: 28,
   },
   text: {
     marginTop: 10,
