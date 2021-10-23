@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Vibration } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
 export const QRCamera = () => {
@@ -12,7 +12,7 @@ export const QRCamera = () => {
     };
     a();
   }, []);
-  console.log(hasPermission);
+  // console.log(hasPermission);
   if (hasPermission === null) {
     return <Text>Requesting for camera permission</Text>;
   }
@@ -22,8 +22,12 @@ export const QRCamera = () => {
   return (
     <View style={styles.container}>
       <BarCodeScanner
-        onBarCodeScanned={() => {
+        onBarCodeScanned={(e) => {
           console.log("scaned");
+          console.log(e.data);
+          if (e.data) {
+            Vibration.vibrate();
+          }
         }}
         style={styles.camera}
       />
