@@ -1,14 +1,22 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 
 export const CreateButton = () => {
+  const navigation = useNavigation();
+
+  const onPress = () => {
+    navigation.navigate("ShopInput");
+  };
+
   return (
     <Button
       buttonStyle={styles.button}
       activeOpacity={1}
       title="作成する🍻"
       titleStyle={styles.title}
+      onPress={onPress}
     />
   );
 };
