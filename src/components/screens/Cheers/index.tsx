@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { StyleSheet, View, Pressable, Text } from "react-native";
 import LottieView from "lottie-react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { defaultStyle } from "../../../styles";
 
@@ -18,7 +19,10 @@ export const Cheers = () => {
     startAnimation();
   }, []);
 
+  const navigation = useNavigation();
+
   const onUsedButtonPress = () => {
+    navigation.navigate("Start");
     // このクーポンのDELETE
   };
 
@@ -44,7 +48,7 @@ export const Cheers = () => {
         <Text style={[styles.text]}>
           この画面をお店に提示し、使用済みにするを押してください
         </Text>
-        <Pressable>
+        <Pressable onPress={onUsedButtonPress}>
           <Text
             style={[
               styles.text,
