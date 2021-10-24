@@ -9,9 +9,13 @@ import {
   Pressable,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { default as axios } from "axios";
+import { useSelector } from "react-redux";
 
 import { getRandomImg } from "../../../utils";
 import { defaultStyle } from "../../../styles";
+import { baseUrl } from "../../../constans";
+import { RootState } from "../../../stores";
 
 type Props = {
   id: number;
@@ -21,9 +25,21 @@ type Props = {
 
 export const Item = ({ id, sheetId, containerStyle }: Props) => {
   const navigation = useNavigation();
+  const name = useSelector((state: RootState) => state.userReducer.name);
+  const age = useSelector((state: RootState) => state.userReducer.age);
 
-  const onPress = () => {
-    navigation.navigate("ShopCouponUse");
+  const onPress = async () => {
+    // try {
+    //   const res = await axios.patch(`${baseUrl}/coupons/user_id`, {
+    //     userId: 1,
+    //     coupon_id: id,
+    //     text: "ok",
+    //     state: 1,
+    //   });
+    // } catch (e) {}
+    navigation.navigate("ShopCouponUse", {
+      id,
+    });
   };
 
   return (

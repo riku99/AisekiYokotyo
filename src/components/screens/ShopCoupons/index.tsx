@@ -7,22 +7,11 @@ import { Item } from "./Item";
 import { baseUrl } from "../../../constans";
 import { StackParamList } from "../../../Navigations";
 
-const data = [
-  {
-    id: 1,
-    sheetId: 10,
-  },
-  {
-    id: 2,
-    sheetId: 11,
-  },
-];
-
 export const ShopCoupons = () => {
   const { params } = useRoute<RouteProp<StackParamList, "ShopCoupons">>();
 
   if (!params.data || !params.data.length) {
-    return [];
+    return null;
   }
 
   return (

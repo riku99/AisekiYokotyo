@@ -22,7 +22,9 @@ export type StackParamList = {
       id: number;
     }[];
   };
-  ShopCouponUse: undefined;
+  ShopCouponUse: {
+    id: number;
+  };
   QRCamera: undefined;
   Cheers: undefined;
 };
