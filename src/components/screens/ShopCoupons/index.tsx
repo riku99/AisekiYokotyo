@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
+import { default as axios } from "axios";
+import { useRoute, RouteProp } from "@react-navigation/native";
 
 import { Item } from "./Item";
+import { baseUrl } from "../../../constans";
+import { StackParamList } from "../../../Navigations";
 
 const data = [
   {
@@ -15,16 +19,23 @@ const data = [
 ];
 
 export const ShopCoupons = () => {
+  const { params } = useRoute<RouteProp<StackParamList, "ShopCoupons">>();
+
+  if (!params.data || !params.data.length) {
+    return [];
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView
         contentContainerStyle={{ alignItems: "center", paddingVertical: 20 }}
       >
-        {data.map((d) => {
+        {params.data.map((d) => {
           return (
             <Item
               key={d.id}
-              sheetId={d.sheetId}
+              // sheetId={d.sheetId}
+              sheetId={10}
               id={d.id}
               containerStyle={{ marginTop: 30 }}
             />

@@ -41,7 +41,7 @@ export const Item = ({
           onPress: async () => {
             try {
               await axios.patch(`${baseUrl}/coupons/used`, {
-                coupon_id: id,
+                coupon_id: 1,
                 state: 2,
               });
               deleteData();

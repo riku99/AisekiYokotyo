@@ -13,11 +13,15 @@ import { ShopCouopnUse } from "../components/screens/ShopCouponUse";
 import { QRCamera } from "../components/screens/QRCamera";
 import { Cheers } from "../components/screens/Cheers";
 
-type StackParamList = {
+export type StackParamList = {
   Start: undefined;
   CustomerCoupon: undefined;
   ShopInput: undefined;
-  ShopCoupons: undefined;
+  ShopCoupons: {
+    data: {
+      id: number;
+    }[];
+  };
   ShopCouponUse: undefined;
   QRCamera: undefined;
   Cheers: undefined;
