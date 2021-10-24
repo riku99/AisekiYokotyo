@@ -25,18 +25,8 @@ type Props = {
 
 export const Item = ({ id, sheetId, containerStyle }: Props) => {
   const navigation = useNavigation();
-  const name = useSelector((state: RootState) => state.userReducer.name);
-  const age = useSelector((state: RootState) => state.userReducer.age);
 
   const onPress = async () => {
-    // try {
-    //   const res = await axios.patch(`${baseUrl}/coupons/user_id`, {
-    //     userId: 1,
-    //     coupon_id: id,
-    //     text: "ok",
-    //     state: 1,
-    //   });
-    // } catch (e) {}
     navigation.navigate("ShopCouponUse", {
       id,
     });

@@ -13,40 +13,18 @@ export const ShopInput = () => {
 
   const onSendPress = async () => {
     try {
-      const res = await axios.get(
-        // 404
+      const res = await axios.get<any[]>(
         `${baseUrl}/coupons?shopId=${shopId}&sheetNumber=${sheetNumber}`
       );
+
+      console.log("keyy");
+      console.log(res.data);
       navigation.navigate("ShopCoupons", {
-        data: [
-          {
-            id: 1,
-          },
-          {
-            id: 2,
-          },
-          {
-            id: 3,
-          },
-        ],
+        data: res.data,
       });
     } catch (e) {
       console.log(e);
     }
-
-    navigation.navigate("ShopCoupons", {
-      data: [
-        {
-          id: 1,
-        },
-        {
-          id: 2,
-        },
-        {
-          id: 3,
-        },
-      ],
-    });
   };
 
   return (

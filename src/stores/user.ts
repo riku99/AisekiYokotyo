@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type User = {
+  id: number | null;
   name: string | null;
   age: number | null;
 };
 
 const initialState: User = {
+  id: null,
   name: null,
   age: null,
 };

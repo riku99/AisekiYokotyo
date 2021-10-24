@@ -20,6 +20,7 @@ export type StackParamList = {
   ShopCoupons: {
     data: {
       id: number;
+      sheetNumber: number;
     }[];
   };
   ShopCouponUse: {

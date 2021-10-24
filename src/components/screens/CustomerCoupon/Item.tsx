@@ -21,6 +21,7 @@ type Props = {
   userName: string;
   containerStyle?: StyleProp<ViewStyle>;
   deleteData: () => void;
+  sheetNumber: number;
 };
 
 export const Item = ({
@@ -30,6 +31,7 @@ export const Item = ({
   containerStyle,
   userName,
   deleteData,
+  sheetNumber,
 }: Props) => {
   const onPress = () => {
     Alert.alert(
@@ -40,15 +42,29 @@ export const Item = ({
           text: "はい",
           onPress: async () => {
             try {
-              await axios.patch(`${baseUrl}/coupons/used`, {
-                coupon_id: 1,
-                state: 2,
-              });
               deleteData();
+              Alert.alert(
+                "表示されていた席番号の人からQRコードを読み込んでください"
+              );
+              console.log("go");
+              await axios.patch(
+                `${baseUrl}/coupons/used`,
+                {
+                  coupon_id: id,
+                  state: 2,
+                },
+                {
+                  headers: {
+                    "Content-Type":
+                      "application/x-www-form-urlencoded; charset=UTF-8",
+                  },
+                }
+              );
+              console.log("ok");
+              // deleteData();
             } catch (e) {
               console.log(e);
             }
-            // 予約状態にstatus変える
           },
         },
         {
@@ -70,6 +86,7 @@ export const Item = ({
           resizeMode="contain"
         />
         <Text style={styles.name}>{name}</Text>
+        <Text style={{ marginTop: 10 }}>席番号: {sheetNumber}</Text>
         <Text style={{ marginTop: 10 }}>{userName}</Text>
         <Text style={styles.text}>{text}</Text>
       </Pressable>

@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Vibration } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { useNavigation } from "@react-navigation/native";
+import { default as axios } from "axios";
+import { baseUrl } from "../../../constans";
 
 export const QRCamera = () => {
   const navigation = useNavigation();
   const [hasPermission, setHasPermission] = useState<null | boolean>(null);
-  const [type, setType] = useState(BarCodeScanner.Constants.Type.back);
+  // const [type, setType] = useState(BarCodeScanner.Constants.Type.back);
   useEffect(() => {
     const a = async () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -14,7 +16,24 @@ export const QRCamera = () => {
     };
     a();
   }, []);
-  // console.log(hasPermission);
+
+  const onScaned = async (id: number) => {
+    try {
+      await axios.patch(`${baseUrl}/coupons/used`, {
+        coupon_id: id,
+        state: 3,
+      });
+
+      navigation.navigate("Cheers");
+      Vibration.vibrate();
+    } catch (e) {
+      console.log(e);
+
+      Vibration.vibrate();
+      navigation.navigate("Cheers");
+    }
+  };
+
   if (hasPermission === null) {
     return <Text>Requesting for camera permission</Text>;
   }
@@ -25,12 +44,7 @@ export const QRCamera = () => {
     <View style={styles.container}>
       <BarCodeScanner
         onBarCodeScanned={(e) => {
-          console.log("scaned");
-          console.log(e.data);
-          if (e.data) {
-            Vibration.vibrate();
-            navigation.navigate("Cheers");
-          }
+          onScaned(Number(e.data));
         }}
         style={styles.camera}
       />

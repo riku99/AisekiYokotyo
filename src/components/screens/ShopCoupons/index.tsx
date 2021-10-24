@@ -10,6 +10,9 @@ import { StackParamList } from "../../../Navigations";
 export const ShopCoupons = () => {
   const { params } = useRoute<RouteProp<StackParamList, "ShopCoupons">>();
 
+  // console.log("params");
+  // console.log(params);
+
   if (!params.data || !params.data.length) {
     return null;
   }
@@ -24,7 +27,7 @@ export const ShopCoupons = () => {
             <Item
               key={d.id}
               // sheetId={d.sheetId}
-              sheetId={10}
+              sheetId={d.sheetNumber}
               id={d.id}
               containerStyle={{ marginTop: 30 }}
             />

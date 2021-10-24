@@ -13,10 +13,11 @@ import {
 import { Button } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
-import Logo from "../../../assets/logo.svg";
+import { default as axios } from "axios";
 
 import { defaultStyle } from "../../../styles";
 import { setUser } from "../../../stores/user";
+import { baseUrl } from "../../../constans";
 
 export const Start = () => {
   const navigation = useNavigation();
@@ -24,18 +25,34 @@ export const Start = () => {
   const [age, setAge] = useState<number>();
   const dispatch = useDispatch();
 
-  const onStartButtonPress = () => {
+  const onStartButtonPress = async () => {
     if (!name || !age) {
       Alert.alert("入力してください");
       return;
     }
-    dispatch(
-      setUser({
-        name,
-        age,
-      })
-    );
-    navigation.navigate("CustomerCoupon");
+
+    try {
+      const res = await axios.post<{ userId: number }>(
+        `${baseUrl}/create_users`,
+        {
+          name,
+          age,
+        }
+      );
+
+      dispatch(
+        setUser({
+          id: res.data.userId,
+          name,
+          age,
+        })
+      );
+
+      navigation.navigate("CustomerCoupon");
+    } catch (e) {
+      console.log(e);
+      // navigation.navigate("CustomerCoupon");
+    }
   };
 
   return (
@@ -46,9 +63,6 @@ export const Start = () => {
     >
       <View style={styles.container}>
         <SafeAreaView>
-          {/* <Text style={styles.title}>相席横丁</Text> */}
-          {/* <Logo width="100%" height={250} fill="red" /> */}
-          {/* <SvgXml xml={logo} width="50%" height="30%" /> */}
           <Image
             source={{
               uri:
